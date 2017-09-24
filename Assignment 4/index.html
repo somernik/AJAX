@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<!--
+    AJAX Assignment 4
+    Sarah Omernik
+    9/23/2017
+
+    Exercise 1
+    create an html page that has 3 buttons within the body (id:btn1, btn2, btn3, value: btn1, btn2, btn3) that is linked to an external javascript file named events.js
+    create an event handler (btn_click) for the 3 buttons that works in both IE and non-IE browsers
+    btn_click should retrieve the value from the button that was clicked and append it to a div tag named cart
+    Turn in the completed assignment using the assignment submission link
+-->
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>AJAX Assignment 4</title>
+    <script src="events.js" type="text/javascript"></script>
+</head>
+<body>
+    <input type="button" id="btn1" value="btn1" />
+    <input type="button" id="btn2" value="btn2" />
+    <input type="button" id="btn3" value="btn3" />
+    <div id="cart"></div>
+</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+    init();
+</script>
