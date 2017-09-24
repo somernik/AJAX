@@ -1,0 +1,50 @@
+function create() {
+	
+	//does something exist
+	if(!document.getElementById("heading") == null) {
+		alert("item does not exist");
+	}
+	
+	
+	console.log("create clicked");
+	
+	//create the element
+	var h1 = document.createElement("h1"); //<h1></h1> or <h1 />
+	var message = document.createTextNode("cubs stink"); //cubs stink
+	h1.appendChild(message); //<h1>cubs stink</h1>
+	h1.id = "subheading";
+	h1.className = "heading";
+
+	//position the element
+	//document.getElementById("heading").appendChild(h1);
+	
+	/*insert before
+	parent = body
+	other child = main
+	*/
+	var main = document.getElementById("main");
+	main.parentNode.insertBefore(h1, main);
+	
+	//footer replacement
+	var footer = document.getElementById("footer");
+	footer.parentNode.replaceChild(document.createElement("hr"), footer);
+	
+	var btn = document.getElementById("btnCreate");
+	btn.parentNode.removeChild(btn);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

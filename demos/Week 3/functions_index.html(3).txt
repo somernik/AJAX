@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Functions</title>
+	<script src="functions.js" type="text/javascript" charset="utf-8">
+		
+	</script>
+</head>
+<body id="" onload="">
+<input type="button" name="click_here" value="click here" id="click_here">
+<input type="button" id="btn2" value="version 2 of click here" onclick="btnClick('my other message')">
+</body>
+</html>
+
+<script type="text/javascript" charset="utf-8">
+init();
+</script>

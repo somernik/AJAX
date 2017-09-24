@@ -1,0 +1,27 @@
+function showState() {
+	//show the abbr. and fulltext from lstStates
+	var list = document.getElementById("lstStates");
+	
+	var abbr = list.value;
+	var index = list.selectedIndex;
+	var selectedItem = list.options[index];
+	console.log(abbr);
+	console.log(selectedItem.text);
+	
+	var outputText = "you selected " + selectedItem.text + " which has an id of: " + abbr;
+	
+	var textNode = document.createTextNode(outputText);
+	var h1 = document.createElement("h1"); //<h1></h1>
+	h1.id = "output";
+	
+	h1.appendChild(textNode); //<h1>some text</h1>
+	
+	var output = document.getElementById("output");
+	if(output) {
+		output.parentNode.replaceChild(h1, output);
+	} else {
+		document.body.appendChild(h1);		
+	}
+
+	
+}

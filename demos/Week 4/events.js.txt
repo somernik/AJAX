@@ -1,0 +1,57 @@
+function init() {
+	//.item input[type='button']
+	var btn1 = document.getElementById("btnIPhone");
+	var btn2 = document.getElementById("btnIPad");
+	var btn3 = document.getElementById("btnNexus5");
+	var btn4 = document.getElementById("btnNexus7");	
+	btn1.onclick = 	addToShoppingCart;
+	btn2.onclick = 	addToShoppingCart;
+	btn3.onclick = 	addToShoppingCart;
+	btn4.onclick = 	addToShoppingCart;		
+	
+	if(window.addEventListener) {
+		btn1.addEventListener("click", eventListenerEvent, false);
+		btn2.addEventListener("click", eventListenerEvent, false);
+		btn3.addEventListener("click", eventListenerEvent, false);
+		btn4.addEventListener("click", eventListenerEvent, false);				
+	} else {
+		btn1.attachEvent("onclick", eventListenerEvent);
+		btn2.attachEvent("onclick", eventListenerEvent);
+		btn3.attachEvent("onclick", eventListenerEvent);
+		btn4.attachEvent("onclick", eventListenerEvent);						
+	}
+}
+
+
+function eventListenerEvent() {
+	//standards compliant event handling
+	//IE = window.event.srcElement -> control that triggered the event
+	//non-IE = this -> control that triggered the event
+	var control;
+	if(window.event) {
+		control = window.event.srcElement;
+	} else {
+		control = this;
+	}
+	console.log("standards compliant event: " + control.value);
+}
+
+function addToShoppingCart() {
+	console.log(this.value); //this -> control that triggered event
+}
+
+/*
+inline methods
+*/
+function inline() {
+	console.log("this is an inline event");
+
+}
+
+function addToCart(product) {
+	console.log(this);
+	console.log(product + " added to cart");
+}
+/*
+end of inline methods
+*/

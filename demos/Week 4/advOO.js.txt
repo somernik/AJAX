@@ -1,0 +1,60 @@
+function init() {
+	var dogA = new Dog();
+	dogA.email = "dog@gmail.com";
+	var btn = document.getElementById("btnClickMe");
+	
+	/*
+	btn.onclick = function() {
+		//this ---> button
+		dogA.bark();
+	}
+	*/
+	btn.onclick = dogA.bark;
+	
+	
+	var objA = new Object();
+	var objB = {};
+	
+
+	alert(dogA.email);
+	dogA.biteMailman();
+	dogA.biteMailman();
+	console.log(Dog.county);
+	Dog.doSomething();
+}
+
+function Dog() {
+	//private variables
+	var name;
+	
+	//public variables
+	this.email;
+	
+	//public function
+	this.bark = function() {
+		
+		console.log(this);
+		console.log(this.email + " bark bark....");
+	}
+}
+//static variable
+Dog.county = "Dane";
+//static method
+Dog.doSomething = function() {
+	console.log("doing something");
+}
+
+//Dog.prototype = new Object();
+Dog.prototype.biteMailman = function() {
+	console.log("bite bite...");
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+var init = function() {
+
+	var output = "asp,php,java,";
+	String.prototype.substring = function() {
+		return "cubs stink";
+	}
+	output = output.substring(0, output.length - 1);
+	alert(output);
+
+
+	var dogA = new Dog();
+	dogA.setName("fido");
+	dogA.weight = 155;
+	dogA.bite = function() {
+		console.log("bite");
+	}
+	
+	dogA.bite();
+	
+	console.log(dogA.getName());
+	console.log(dogA.email);
+	
+	dogA.setCity("verona");
+	console.log(dogA.getCity());
+	
+	var dogB = new Dog();
+	var dogC = new Dog();
+	console.log(dogB.getCity());
+	console.log(dogC.getCity());
+}
+
+//class definition
+function Dog() {
+	
+	//public instance variable
+	this.email = "dog@gmail.com";
+
+	//private instance variable
+	var name = "sparky";
+	
+	//public accessor method
+	this.getName = function() {
+		return name;
+	}
+	
+	this.setName = function(value) {
+		name = value;
+	}
+	
+
+}
+//Dog.prototype = new Object();
+Dog.prototype.newFunction = function() {
+	
+}
+
+/*
+Dog.prototype = new ParentDog();
+
+
+function ParentDog() {
+	var city;
+	
+	this.getCity = function() {
+		return city;
+	}
+	this.setCity = function(value) {
+		city = value;
+	}
+	
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
