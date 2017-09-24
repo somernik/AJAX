@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    AJAX Project 1
+    Sarah Omernik
+    9/9/2017
+ -->
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>AJAX Project 1</title>
+    <script type="text/javascript" src="validate.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8" />
+</head>
+<body>
+    <form action="">
+        <div>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        </div>
+
+        <div>
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        </div>
+
+                <div id="phoneNumber">
+        <label >Phone</label>
+        <input type="text" id="area code">
+        <input type="text" id="prefix">
+        <input type="text" id="suffix">
+        </div>
+
+        <div>
+        <label for="address">Address</label>
+        <input type="text" id="address">
+        </div>
+
+        <div>
+        <label for="city">City</label>
+        <input type="text" id="city">
+        </div>
+
+        <div>
+        <label for="state">State</label>
+        <select name="state" id="state">
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Indiana">Indiana</option>
+        </select>
+        </div>
+
+        <div>
+        <label for="zip">Zip</label>
+        <input type="text" id="zip">
+        </div>
+
+        <div>
+                <label for="gender">Gender</label>
+                <div id="genders">
+                <input type="radio" name="gender" id="male" value="male">Male
+                <input type="radio" name="gender" id="female" value="female">Female<br>
+                </div>
+        </div>
+
+        <div>
+                <label for="">Previous Courses</label>
+                <div id="checkboxes">
+                <input type="checkbox" name="course" id="java" value="Advanced Java">Advanced Java<br/>
+                <input type="checkbox" name="course" id="php" value="PHP">PHP<br/>
+                <input type="checkbox" name="course" id="aspnet" value="ASP.NET">ASP.NET
+                </div>
+        </div>
+
+        <button id="validate">Validate</button>
+    </form>
+</body>
+</html>
+<script type="text/javascript" charset="utf-8">
+    init();
+</script>
