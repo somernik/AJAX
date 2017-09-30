@@ -1,0 +1,63 @@
+var courses; //global variable
+
+function addCourse() {
+	var userTitle = document.getElementById("course_title");
+	var title = userTitle.value;
+	userTitle.value = "";
+	
+	var newCourse = {
+						"title":title,
+						"printDetails": function() {
+							alert(this.title);
+						}
+					};
+					
+	courses.push(newCourse);
+	
+	//courses[0] = null;
+	courses[0].inactive = true;
+	
+	outputCourses();
+}
+
+function outputCourses() {
+	for(var i=0; i < courses.length; i++) {
+		if(!courses[i].inactive) {
+			console.log(courses[i].title);
+		}
+	}
+}
+
+function init() {
+
+	var btn = document.getElementById("btnAddCourse");
+	btn.onclick = addCourse;
+
+	var dogs = []; //collection
+	var dogA = {}; //object
+	var dogB = new Object(); //object
+	
+	courses = [
+					{
+						"title":"asp",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}, 
+					{
+						"title":"php",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}, 
+					{
+						"title":"java",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}
+					];
+	
+	outputCourses();
+
+}

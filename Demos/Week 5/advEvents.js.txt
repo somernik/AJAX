@@ -1,0 +1,80 @@
+function init() {
+	var inner = document.getElementById("inner");
+	var outer = document.getElementById("outer");
+	
+	inner.onclick = divClick;
+	outer.onclick = divClick;
+	
+	
+	var inline = document.getElementById("btnInline");
+	
+	var inlineEvent = inline.onclick;
+	
+	inline.onclick = function() {
+		inlineEvent();
+		//any additional code
+		console.log("added onto the existing event");
+	}
+	
+	//amazon
+	var placeOrderButton = document.getElementById("btnPlaceOrder");
+	
+	var processOrder = function() {
+		emailMerchandiser();
+		emailBuyer();
+		emailWarehouse();
+	}
+	
+	if(window.addEventListener) {
+		placeOrderButton.addEventListener("click", processOrder, false);
+		/*
+		placeOrderButton.addEventListener("click", emailBuyer, false);
+		placeOrderButton.addEventListener("click", emailMerchandiser, false);
+		placeOrderButton.addEventListener("click", emailWarehouse, false);				
+		*/
+	} else {
+		placeOrderButton.attachEvent("onclick", processOrder);		
+		/*
+		placeOrderButton.attachEvent("onclick", emailBuyer);
+		placeOrderButton.attachEvent("onclick", emailMerchandiser);
+		placeOrderButton.attachEvent("onclick", emailWarehouse);
+		*/
+		
+	}
+	//email the buyer
+	//email the merchandiser
+	//email the warehouse
+	//reorder inventory
+	//display contextual companion products
+}
+
+function divClick() {
+	console.log(this.id);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function emailBuyer() {
+	console.log("emailBuyer");
+}
+function emailMerchandiser() {
+	console.log("emailMerchandiser");
+}
+function emailWarehouse() {
+	console.log("emailWarehouse");
+}

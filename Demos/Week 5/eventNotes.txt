@@ -1,0 +1,13 @@
+1. dot notation for event handling
+	- browser compatibility
+	- "this" refers to the control that triggered the event
+	* existing inline event handler can over-written
+
+2. standards compliant event handling (addEventListener / attachEvent)
+	- (n) events triggered by the event
+	- model that javascript library(s) use
+	* order is ignored
+	* browser incompatibility (this vs. window.event.srcElement)
+	
+3. inline event handling
+	- existing code

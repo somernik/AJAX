@@ -1,0 +1,17 @@
+JSON = Javascript Object Notation
+
+collection = []
+
+object = {}
+
+separator = ,
+
+key:value - key is mostly a string and the value is a javascript piece of data
+
+'[
+	{"id":1, "name":"bill"}, 
+	{"id":2, "name":"mary"}, 
+	{"id":3, "name":"jeff"}
+]'
+
+var jsObject = Eval(jsonString) 'converting a json string to a js object
