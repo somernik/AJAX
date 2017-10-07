@@ -1,0 +1,66 @@
+function init() {
+
+
+	
+	xmlFromString();
+	
+	//file on the filesystem
+	//1. load the file contents (users.xml) into an xmlParser
+	//XMLHttpRequest
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "users.xml"); //server url
+	
+	
+	//callback
+	xhr.onreadystatechange = function() {
+		//readyState = 0 .. 4
+		if(xhr.readyState == 4) {
+			//process the results
+			queryXML(xhr.responseXML);
+		}
+	}
+	
+	
+	xhr.send(null); //go get the result from the url request
+	
+	//2. queryXML(xmlParser) (already done)
+
+}
+
+function queryXML(xmlParser) {
+	//Querying the XML
+	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
+	//[0] = <name><first>bill</first><last>gates</last></name>
+	//[1] = <name><first>steve</first><last>jobs</last></name>
+	for(var i=0; i< nameNodes.length;i++) {
+		//console.log(nameNodes[i].childNodes[0].nodeValue);
+		var id = nameNodes[i].parentNode.id;
+		var first = nameNodes[i].getElementsByTagName("first")[0].childNodes[0].nodeValue;
+		var last = 	nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue;
+		console.log("id: " + id);
+		console.log(first + " " + last);
+	}
+}
+
+function xmlFromString() {
+	//string of xml data
+	var xmlData = "<users><user id='1'><name><first>bill</first><last>gates</last></name></user><user id='2'><name><first>steve</first> <last>jobs</last></name></user></users>";
+	
+	//1. convert the string to an xml parser (DOMParser)
+	var xmlParser;
+	if(window.DOMParser) {
+		//xmlParser will be an instance of DOMParser
+		xmlParser = new DOMParser().parseFromString(xmlData, "application/xml");
+	} else {
+		//xmlParser will be an instance of an ActiveXObject
+		xmlParser = new ActiveXObject("Microsoft.XMLDOM");
+		xmlParser.loadXML(xmlData);
+	}
+	
+	queryXML(xmlParser);
+}
+
+
+
+
+
