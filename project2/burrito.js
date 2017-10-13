@@ -11,8 +11,8 @@ function init() {
 }
 
 function addBurritoToOrder() {
-    alert("added");
     var ingredients = Array();
+    var burrito = new Burrito();
 
     // get the values
     // TODO validate
@@ -56,59 +56,14 @@ function addBurritoToOrder() {
  
     // print burrito to receipt
         //items
-        var burritoTotal = 0;
-        var burritoDisplay = "";
+        
+    burrito.ingredients = ingredients;
+    
+    burrito.determinePriceAndDisplay();
 
-        var displayDict = {
-            "chicken": "Chicken Burrito",
-            "steak": "Steak Burrito",
-            "carnitas": "Carnitas Burrito",
-            "barbacoa": "Barbacoa Burrito",
-            "vegetarian": "Vegetarian Burrito",
-            "brown": "Brown Rice",
-            "white": "White Rice",
-            "pinto": "Pinto Beans",
-            "black": "Black Beans",
-            "pico": "Pico de Gallo",
-            "corn": "Roasted Corn",
-            "green": "Tomatillo - Green",
-            "red": "Tomatillo - Red",
-            "guac": "Guacamole"
-        };
-
-       
-
-        //burrito total
-        var priceDict = {
-            "chicken": 6.2,
-            "steak": 6.75,
-            "carnitas": 6.6,
-            "barbacoa": 6.6,
-            "vegetarian": 6.2,
-            "brown": 0,
-            "white": 0,
-            "pinto": 0,
-            "black": 0,
-            "pico": 0,
-            "corn":0,
-            "green":0,
-            "red":0,
-            "guac":1.4
-        };
-
-        ingredients.forEach(function(i, index){
-            if (index == 0) {
-                burritoDisplay += displayDict[i];
-            } else if (index == 1) {
-                burritoDisplay += " with " + displayDict[i];
-            } else {
-                burritoDisplay += " and " + displayDict[i];
-            }
-            burritoTotal += priceDict[i];
-        });
+    burrito.addDisplayToPage();
     // add to order total
-    alert(burritoTotal);
-    alert(burritoDisplay);
+    
     // clear values
 }
 
@@ -117,4 +72,96 @@ function removeBurritoFromOrder() {
     // remove burrito from receipt
     // subtract from total
 
+}
+
+function Burrito() {
+    
+    var that = this;
+    this.type;
+    this.price;
+    this.ingredients;
+    this.display;
+
+    var displayDict = {
+        "chicken": "Chicken Burrito",
+        "steak": "Steak Burrito",
+        "carnitas": "Carnitas Burrito",
+        "barbacoa": "Barbacoa Burrito",
+        "vegetarian": "Vegetarian Burrito",
+        "brown": "Brown Rice",
+        "white": "White Rice",
+        "pinto": "Pinto Beans",
+        "black": "Black Beans",
+        "pico": "Pico de Gallo Salsa",
+        "corn": "Roasted Corn Salsa",
+        "green": "Tomatillo - Green Salsa",
+        "red": "Tomatillo - Red Salsa",
+        "guac": "Guacamole"
+    };
+
+    var priceDict = {
+        "chicken": 6.2,
+        "steak": 6.75,
+        "carnitas": 6.6,
+        "barbacoa": 6.6,
+        "vegetarian": 6.2,
+        "brown": 0,
+        "white": 0,
+        "pinto": 0,
+        "black": 0,
+        "pico": 0,
+        "corn":0,
+        "green":0,
+        "red":0,
+        "guac":1.4
+    };
+
+    this.determinePriceAndDisplay = function() {
+        that.price = 0;
+        that.display = "";
+
+        that.ingredients.forEach(function(i, index){
+
+            if (index == 0) {
+                that.type = displayDict[i];
+            }
+
+            that.price += priceDict[i];
+        });
+    }
+
+    this.addDisplayToPage = function() {
+    
+        // Create new div
+        var div = document.createElement("div");
+        // TODO add id to be able to delete later
+    
+        // Create new inputs
+        var header = document.createElement("h4");
+        var footer = document.createElement("p");
+        
+        // TODO Assign input attributes
+    
+        var headerText = document.createTextNode(that.type);
+        header.appendChild(headerText);
+        div.appendChild(header);
+
+        that.ingredients.forEach(function(i, index){
+            if (index != 0) {
+                var currentIngred = document.createTextNode("+ " + displayDict[i]);
+                var currentP = document.createElement("p");
+                currentP.appendChild(currentIngred);
+                div.appendChild(currentP);
+            }
+        });
+
+        var footerText = document.createTextNode("Price: " + that.price); // TODO format price
+        footer.appendChild(footerText);
+        div.appendChild(footer);
+
+        // TODO add button to remove burrito
+
+        // Position elements on html page
+        document.body.appendChild(div);
+    }
 }
