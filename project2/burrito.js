@@ -54,13 +54,13 @@ function addBurritoToOrder() {
         ingredients.push(guac.value);
     }
  
-    // print burrito to receipt
-        //items
-        
+    // add ingredients to burrito    
     burrito.ingredients = ingredients;
     
-    burrito.determinePriceAndDisplay();
+    // calculate total
+    burrito.determinePrice();
 
+    // print burrito to receipt
     burrito.addDisplayToPage();
     // add to order total
     
@@ -80,7 +80,6 @@ function Burrito() {
     this.type;
     this.price;
     this.ingredients;
-    this.display;
 
     var displayDict = {
         "chicken": "Chicken Burrito",
@@ -116,9 +115,8 @@ function Burrito() {
         "guac":1.4
     };
 
-    this.determinePriceAndDisplay = function() {
+    this.determinePrice = function() {
         that.price = 0;
-        that.display = "";
 
         that.ingredients.forEach(function(i, index){
 
