@@ -1,0 +1,5 @@
+event handlers
+
+inline  - only ok to have if you are working code already written. 
+    leave inline and dont modify if you didnt write it
+

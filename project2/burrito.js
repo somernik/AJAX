@@ -57,6 +57,7 @@ function addBurritoToOrder() {
     // print burrito to receipt
         //items
         var burritoTotal = 0;
+        var burritoDisplay = "";
 
         var displayDict = {
             "chicken": "Chicken Burrito",
@@ -95,12 +96,19 @@ function addBurritoToOrder() {
             "guac":1.4
         };
 
-        ingredients.forEach(function(i){
-            alert(displayDict[i]);
+        ingredients.forEach(function(i, index){
+            if (index == 0) {
+                burritoDisplay += displayDict[i];
+            } else if (index == 1) {
+                burritoDisplay += " with " + displayDict[i];
+            } else {
+                burritoDisplay += " and " + displayDict[i];
+            }
             burritoTotal += priceDict[i];
         });
     // add to order total
     alert(burritoTotal);
+    alert(burritoDisplay);
     // clear values
 }
 
