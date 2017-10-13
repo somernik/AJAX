@@ -1,5 +1,8 @@
+var currentId = 0;
+
 function init() {
     var addBurritobutton = document.getElementById("addBurrito");
+
 
     if (window.addEventListener) {
         addBurritobutton.addEventListener("click", addBurritoToOrder, false);
@@ -13,6 +16,8 @@ function init() {
 function addBurritoToOrder() {
     var ingredients = Array();
     var burrito = new Burrito();
+    currentId += 1;
+    burrito.id = currentId;
 
     // get the values
     // TODO validate
@@ -77,6 +82,7 @@ function removeBurritoFromOrder() {
 function Burrito() {
     
     var that = this;
+    this.id;
     this.type;
     this.price;
     this.ingredients;
@@ -132,35 +138,57 @@ function Burrito() {
 
 function addDisplayToPage(burrito) {
     
-        // Create new div
-        var div = document.createElement("div");
-        // TODO add id to be able to delete later
+    // Create new div
+    var div = document.createElement("div");
+    div.id = "div" + burrito.id;
+
+    // Create new elements
+    var header = document.createElement("h4");
+    var footer = document.createElement("p");
     
-        // Create new inputs
-        var header = document.createElement("h4");
-        var footer = document.createElement("p");
-        
-        // TODO Assign input attributes
-    
-        var headerText = document.createTextNode(burrito.type);
-        header.appendChild(headerText);
-        div.appendChild(header);
+    // TODO Assign input attributes??
 
-        burrito.ingredients.forEach(function(i, index){
-            if (index != 0) {
-                var currentIngred = document.createTextNode("+ " + burrito.displayDict[i]);
-                var currentP = document.createElement("p");
-                currentP.appendChild(currentIngred);
-                div.appendChild(currentP);
-            }
-        });
+    var headerText = document.createTextNode(burrito.type);
+    header.appendChild(headerText);
+    div.appendChild(header);
 
-        var footerText = document.createTextNode("Price: " + burrito.price); // TODO format price
-        footer.appendChild(footerText);
-        div.appendChild(footer);
+    burrito.ingredients.forEach(function(i, index){
+        if (index != 0) {
+            var currentIngred = document.createTextNode("+ " + burrito.displayDict[i]);
+            var currentP = document.createElement("p");
+            currentP.appendChild(currentIngred);
+            div.appendChild(currentP);
+        }
+    });
 
-        // TODO add button to remove burrito
+    var footerText = document.createTextNode("Price: " + formatAsCurrency(burrito.price));
+    footer.appendChild(footerText);
+    div.appendChild(footer);
 
-        // Position elements on html page
-        document.body.appendChild(div);
+    // TODO add button to remove burrito
+    var removeButton = document.createElement("input");
+    removeButton.type = "button";
+    removeButton.id = "button" + burrito.id;
+    removeButton.value = "Remove Burrito";
+    if (window.addEventListener) {
+        removeButton.addEventListener("click", test, false);
+    } else {
+        removeButton.attachEvent("onclick", test);
     }
+    div.appendChild(removeButton);
+
+    // Position elements on html page
+    document.body.appendChild(div);
+}
+
+function formatAsCurrency(number) {
+    var formatted = number.toFixed(2).replace(/./g, function(c, i, a) {
+        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+    });
+    return "$" + formatted;
+}
+
+function test() {
+
+    alert("test");
+}
