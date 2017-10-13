@@ -61,7 +61,7 @@ function addBurritoToOrder() {
     burrito.determinePrice();
 
     // print burrito to receipt
-    burrito.addDisplayToPage();
+    addDisplayToPage(burrito);
     // add to order total
     
     // clear values
@@ -81,7 +81,7 @@ function Burrito() {
     this.price;
     this.ingredients;
 
-    var displayDict = {
+    this.displayDict = {
         "chicken": "Chicken Burrito",
         "steak": "Steak Burrito",
         "carnitas": "Carnitas Burrito",
@@ -98,7 +98,7 @@ function Burrito() {
         "guac": "Guacamole"
     };
 
-    var priceDict = {
+    this.priceDict = {
         "chicken": 6.2,
         "steak": 6.75,
         "carnitas": 6.6,
@@ -121,14 +121,16 @@ function Burrito() {
         that.ingredients.forEach(function(i, index){
 
             if (index == 0) {
-                that.type = displayDict[i];
+                that.type = that.displayDict[i];
             }
 
-            that.price += priceDict[i];
+            that.price += that.priceDict[i];
         });
     }
 
-    this.addDisplayToPage = function() {
+}
+
+function addDisplayToPage(burrito) {
     
         // Create new div
         var div = document.createElement("div");
@@ -140,20 +142,20 @@ function Burrito() {
         
         // TODO Assign input attributes
     
-        var headerText = document.createTextNode(that.type);
+        var headerText = document.createTextNode(burrito.type);
         header.appendChild(headerText);
         div.appendChild(header);
 
-        that.ingredients.forEach(function(i, index){
+        burrito.ingredients.forEach(function(i, index){
             if (index != 0) {
-                var currentIngred = document.createTextNode("+ " + displayDict[i]);
+                var currentIngred = document.createTextNode("+ " + burrito.displayDict[i]);
                 var currentP = document.createElement("p");
                 currentP.appendChild(currentIngred);
                 div.appendChild(currentP);
             }
         });
 
-        var footerText = document.createTextNode("Price: " + that.price); // TODO format price
+        var footerText = document.createTextNode("Price: " + burrito.price); // TODO format price
         footer.appendChild(footerText);
         div.appendChild(footer);
 
@@ -162,4 +164,3 @@ function Burrito() {
         // Position elements on html page
         document.body.appendChild(div);
     }
-}
