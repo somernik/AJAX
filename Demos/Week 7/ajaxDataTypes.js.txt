@@ -1,0 +1,69 @@
+function makeAJAXRequest(url, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 &&
+			xhr.status == 200) {
+			callback(xhr);				
+		}
+	}
+	
+	xhr.send(null);
+}
+
+
+function init() {
+	var plainTextButton = document.getElementById("btnPlaintext");
+	var xmlButton = document.getElementById("btnXML");
+	var jsonButton = document.getElementById("btnJSON");		
+	
+	plainTextButton.onclick = function() {
+		makeAJAXRequest("plaintext.php", function(xhr) {
+			alert(xhr.responseText);
+		})
+	}
+	
+	
+	
+	xmlButton.onclick = function() {
+		
+		makeAJAXRequest("xml.php", function(xhr) {
+					var names = 					xhr.responseXML.getElementsByTagName("name");
+					for(var i=0; i< names.length; i++) {
+						alert(names[i].childNodes[0].nodeValue);
+					}
+				});
+		
+	}
+	jsonButton.onclick = function() {
+		
+		
+		makeAJAXRequest("json.php", function(xhr) {
+			//xhr.responseText = "[{}, {}]"
+			//xhr.responseText = [{}, {}]
+			
+			//convert xhr.responseText to a js object
+			var users = eval('(' + xhr.responseText + ')');
+			
+			for(var i = 0; i<users.length; i++) {
+				alert(users[i].name);
+			}
+		})
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>DataTypes in AJAX</title>
+	<script src="ajaxDataTypes.js" type="text/javascript" charset="utf-8">
+		
+	</script>
+</head>
+<body id="" onload="">
+	<input type="button" value="plain text" id="btnPlaintext">
+	<br />
+	<input type="button" value="xml" id="btnXML">
+	<br />
+	<input type="button" value="json" id="btnJSON">
+</body>
+
+</html>
+<script type="text/javascript" charset="utf-8">
+init();
+</script>

@@ -1,0 +1,9 @@
+<?php
+header('Content-type: application/xml');
+
+
+$output = "<users><user><id>1</id><name>bill</name></user><user><id>2</id><name>steve</name></user></users>";
+
+echo $output;
+
+?>

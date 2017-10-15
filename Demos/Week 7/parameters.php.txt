@@ -1,0 +1,7 @@
+<?php
+//$_GET
+//$_POST
+//$_REQUEST
+
+echo 'hello ' . $_REQUEST["name"];
+?>
