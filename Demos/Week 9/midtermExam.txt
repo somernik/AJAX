@@ -1,0 +1,149 @@
+Why are anonymous functions needed in javascript. Make sure to explain the problem and how anonymous function address the problem. (5 points)
+
+
+btn.onclick = function() {
+	doSomething(a, b);
+}
+
+.addEventListener("click", function1, false);
+.addEventListener("click", function2, false);
+.addEventListener("click", function3, false);
+
+.addEventListener("click", function() {
+
+	function1();
+	function2();
+	function3();		
+
+}, false);
+
+
+btn.onclick = function() { aHouse.calcPrice() };
+
+function House() {
+
+	var sqFt = 1000;
+	this.calcPrice = function() {
+		return this.sqFt * 100;
+	
+	} 
+
+}
+
+
+
+
+
+
+
+
+With the below xml, recreate the data by creating a variable that stores the same data as JSON. Output the value of the 2nd state's abbreviation and fulltext. (5 points)<states>    <state>        <abbreviation>WI</abbreviation>        <fulltext>Wisconsin</fulltext>    </state>    <state>        <abbreviation>IL</abbreviation>        <fulltext>Illinois</fulltext>    </state>    <state>        <abbreviation>MN</abbreviation>        <fulltext>Minnesota</fulltext>    </state></states>
+
+
+
+
+var jsonData = {"states": [{"abbrevation":"WI", "fulltext":"Wisconsin"}, 
+				{"abbrevation":"IL", "fulltext":"Illinois"}, 
+				{"abbrevation":"MN", "fulltext":"Minnesota"}]};
+				
+
+console.log(jsonData.states[1].abbrevation + jsonData.states[1].fulltext);
+
+
+
+
+
+Assuming you have a server resource called response.php that sends you a JSON response. Write code to create an ajax request to that retrieves the JSON response from response.php and loads the response into a javascript variable called response. (5 points)
+
+
+var url = "response.php";
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+
+xhr.onreadystatechange = function() {
+
+	if(xhr.readyState == 4) {
+		var response = xhr.responseText;
+	}
+
+}
+
+xhr.send(null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Assuming the xml below is loaded in a string variable named _states, load the string into a xml document (cross browser). Create a textnode that contains the fulltext of the 2nd state and append it to the document.body (5 points)
+
+var _states = "
+<states>    <state>        <abbreviation>WI</abbreviation>        <fulltext>Wisconsin</fulltext>    </state>    <state>        <abbreviation>IL</abbreviation>        <fulltext>Illinois</fulltext>    </state>    <state>        <abbreviation>MN</abbreviation>        <fulltext>Minnesota</fulltext>    </state>
+</states>";
+
+var xmlDoc;
+if(window.DOMParser) {
+	xmlDoc = new DOMParser().parseFromString(_states, "application/xml");
+} else {
+	xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+	xmlDoc.loadXML(_states);
+}
+
+var text = xmlDoc.getElementsByTagName("fulltext")[1].childNodes[0].nodeValue;
+document.body.appendChild(document.createTextNode(text));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create a class (Rectangle) that has 2 private variables _length and _width. Add a function called Perimeter that calculates the perimeter of the current rectangle instance. The Perimeter function should be included in the prototype of the Rectangle class. Make sure the Perimeter method does not access the instance variables _length and _width. The variables should be passed into the Perimeter method (5 points)
+
+function Rectangle() {
+
+	var _length;
+	var _width;
+	
+}
+
+//static method
+Rectangle.perimeter = function(l, w) {
+
+}
+
+Rectangle.prototype.perimeter = function(l, w) {
+
+	return 2 * (l + w);
+}
+
+var aRect = new Rectangle();
+aRect.perimeter(10, 5);
+
+
+Rectangle.perimeter(10, 5);

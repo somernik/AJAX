@@ -1,0 +1,39 @@
+$(document).ready(function() {
+	
+	alert("replacement for the init method");
+	
+	var nameField = $("#txtName"); //document.getElementById("txtName")
+	
+	//$("li").text("cubs stink");
+	$("li").mouseover(function() {
+		$(this).css("backgroundColor", "yellow");
+	}).mouseout(function() {
+		$(this).css("backgroundColor", "white");		
+	})
+	
+	var newDeleteButton = $("<input type='button' value='delete' />");
+	newDeleteButton.click(function() {
+		$(this).remove();
+	});
+	
+	//$("body").append(newDeleteButton);
+	newDeleteButton.appendTo($("body"));
+	
+	$("#output").text("<h3>hello world</h3>");
+	
+	$.post(url, function() {
+		
+	})
+	$.post(url, data, function() {
+		
+	})
+	
+	
+	/*
+	appendChild
+	replaceChild
+	insertBefore
+	removeChild
+	*/
+	
+});
