@@ -1,0 +1,57 @@
+function Cat() {
+	//public
+	this.publicVariable;
+	
+	//private
+	var name;
+	var email;
+	var bitesPeople = function() {
+		
+	}
+}
+
+
+
+var init = function() {
+
+	var catA = new Cat();
+	
+	var btn = document.getElementById("click_here");
+	var btn2 = document.getElementById("btn2");
+	
+	console.log(btn2.onclick);
+	
+	
+	
+	
+	/*
+	//version 1.0 - correct version
+	btn.onclick = function() {
+		btnClick("hello world");
+	}
+	*/
+	btn.onclick = executeBtnClick;
+	
+	
+	
+	/*
+	console.log(btnClickPart1); //function def
+	console.log(btnClickPart1()); //return value from btnClickPart1
+	*/
+
+}
+
+var btnClickPart1 = function() {
+	//console.log("button was clicked");
+}
+
+function executeBtnClick() {
+	btnClick("hello world");
+}
+
+function btnClick(message) {
+	
+	console.log(message);
+	
+}
+
