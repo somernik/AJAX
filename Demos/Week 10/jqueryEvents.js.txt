@@ -1,0 +1,71 @@
+function toggleEvent() {
+	alert($(this).val());
+}
+
+(function($) {
+	$(document).ready(function() {
+	
+		
+		$("li").mouseover(function() {
+			$(this).css("backgroundColor", "yellow");
+		}).mouseout(function() {
+			$(this).css("backgroundColor", "white");			
+		})
+		
+		$("#btnOn").click(function() {
+			$("body").on("click", "#btnToggle", toggleEvent);
+			$("#btnToggle").val("event loaded");
+			
+		})
+		
+		$("#btnOff").click(function() {
+			$("body").off("click", "#btnToggle", toggleEvent);			
+			$("#btnToggle").val("no event attached");
+		})
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		$("input[type='button']").click(function() {
+			//this vs. window.event.srcElement
+			alert($(this).val());
+		})
+		*/
+		
+		
+		//live and die
+		//delegate and off
+		//on and off
+		$("body").on("click", ".clickable", function() {
+			alert($(this).val());
+		})
+		
+		$("<input type='button' class='clickable' value='new button' />").insertBefore($("br"));
+	})
+})(jQuery)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
