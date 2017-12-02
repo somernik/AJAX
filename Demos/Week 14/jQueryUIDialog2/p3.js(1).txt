@@ -1,0 +1,104 @@
+$(document).ready(function() {
+	
+	$("body").on("click", ".glyphicon-trash", function() {
+		
+		var deleteConfirmationForm = $("<div title='confirm delete task'>").text("are you sure you want to delete this task");
+		
+		var td = $(this).parent().parent();		
+		
+		deleteConfirmationForm.dialog( {
+			"modal":true,
+			"buttons": {
+				"yes - delete task": function() {
+					
+					//notify the server
+					$.post("deleteTask.php", {"id":td.parent().attr("id")}, function(confirmation) {
+						if(confirmation == 1) {
+							//update the user-interface
+
+							td.parent().remove();							
+						}
+					})
+					
+
+					
+					$(this).dialog("close");					
+				},
+				"cancel": function() {
+					$(this).dialog("close");
+				}
+			},
+			"close": function() {
+				//set the form values back to ""
+				$(this).remove();
+			}
+		})
+		
+		
+
+		
+		
+
+	})
+	
+	$.get("allTasks.php", function(tasks) {
+		
+		$(tasks).each(function(index, task) {
+			addTaskToUI(task);
+		})
+		
+	}, "json");
+	
+	$("#addTaskForm").dialog({
+		"modal":true,
+		"autoOpen":false,
+		"buttons": {
+			"Create Task": function() {
+
+				var newTask = {"id":1, "description":$("#desc").val()};
+
+				addTaskToUI(newTask);
+				$(this).dialog("close");
+			},
+			"Cancel": function() {
+				$(this).dialog("close");
+			}
+		},
+		"close":function() {
+			$("#desc").val("");				
+		}
+	})
+	
+	$("#btnAddTask").click(function() {
+		$("#addTaskForm").dialog("open");
+	})
+	
+})
+
+function addTaskToUI(task) {
+	//task.id
+	//task.description
+
+	var row = $("<tr>").attr("id", task.id);
+
+	var trashBtn = $("<button type='button' class='btn btn-default'><span class='glyphicon glyphicon-trash'></span></button>");
+	row.append($("<td>").append(trashBtn));
+	row.append($("<td>").text(task.description));
+
+	row.appendTo($("tbody"));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

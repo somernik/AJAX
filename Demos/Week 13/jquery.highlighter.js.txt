@@ -1,0 +1,20 @@
+(function($) {
+	$.fn.highlighter = function(options) {
+		console.log("highlighter function");
+		console.log($.fn.highlighter.defaults);
+		var localDefaults = $.extend({}, $.fn.highlighter.defaults);
+		$.extend(localDefaults, options);
+		//$(this) == original selection (collection of li)
+	
+		return $(this).each(function(index, item) {
+			$(item).mouseover(function() {
+				$(item).css("backgroundColor", localDefaults.color);
+			}).mouseout(function() {
+				$(item).css("backgroundColor", "white");
+			})
+		})
+	}
+
+})(jQuery)
+
+	jQuery.fn.highlighter.defaults = {"color":"yellow"};
