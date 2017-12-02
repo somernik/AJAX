@@ -6,13 +6,14 @@
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="jInvertScroll/dist/js/jquery.jInvertScroll.js"></script>
-
     <style>
+        /* For each layer */
         .scroll {
             position: fixed;
             bottom: 0;
         }
 
+        /* Define z-index and width for each layer seperately */
         .horizon
         {
             z-index: 1;
@@ -32,78 +33,84 @@
         }
 
         .content {
-            top: -400px;
-            width: 500px;
-            background: gray;
+            top: -450px;
+            width: 600px;
+            background: #238acb;
+            color: white;
             padding: 10px 30px;
             border: 1px #eee solid;
             position: absolute;
         }
+
         #elephants {
             height: 650px;
+        }
+
+        div {
+            text-align: center; 
+        }
+
+        /* position divs on page */   
+        #firstDiv {
+            left: 300px;
+        }
+
+        #secondDiv {
+            left: 1300px;
+        }
+
+        #thirdDiv {
+            left: 2350px;
         }
     </style>
 </head>
 <body>
     
-
-    <h1>jInvertScroll Example - Sarah Omernik</h1>
-    
     <div class="horizon scroll">
+        <!-- background image -->
         <img id="horizon" src="horizon.png" />
     </div>
+
     <div class="middle scroll">
+        <!-- middleground image -->
         <img id="elephants" src="background2.png" />
     </div>
+
     <div class="front scroll">
-     
-        <div class="content" style="
-                left: 275px;">
-            namenamenamename
-            name
-            name
-            name
-            name
-            name
-
-            v
-            name
-            name
-            name
-            name
-            name
-            name
-
-
+        <!-- foreground content -->
+        <div class="content" id="firstDiv">
+                
+            <h1>jInvertScroll Example - Sarah Omernik</h1>
+            <p>
+                This plugin allows content to move horizontally across the screen
+                with a parallax effect while the user scrolls down.
+                The parallax effect is caused by the different widths of the layers making
+                them look like they are moving at different rates.
+            </p>
+            
+            <p>Scroll down to see more</p>
+          
+      
         </div>
 
-        <div class="content" style="
-                left: 1100px;">
-            description
+        <div class="content" id="secondDiv">
+            <p>
+                This example has 3 layers: the lightblue mountains, the elephants and the divs with paragraphs.
+            </p>
+            <p>
+                With jInvertScroll you can have as many layers as you want. They must be passed as an array to the jInvertScroll function.
+                For the layers to move at different rates you need to specify different widths and z-indexes in your CSS.
+            </p>
+            
+            <p>Continue scrolling down to see more</p>
         </div>
 
-        <div class="content" style="
-                left: 2100px;">
-            notes
+        <div class="content" id="thirdDiv">
+            <h3>Documentation</h3>
+            <p><a target="_blank" href="https://www.pixxelfactory.net/jInvertScroll/">jInvertScroll</a></p>
         </div>
 
-        <div class="content" style="
-                left: 3100px;">
-            example
-        </div>
-        
     </div>
 </body>
 </html>
-
-    <script type="text/javascript">
-    (function($) {
-        $.jInvertScroll(['.scroll'],        // an array containing the selector(s) for the elements you want to animate
-            {
-            height: 6000,                   // optional: define the height the user can scroll, otherwise the overall length will be taken as scrollable height
-            onScroll: function(percent) {   //optional: callback function that will be called when the user scrolls down, useful for animating other things on the page
-                console.log(percent);
-            }
-        });
-    }(jQuery));
-    </script>
+<script type="text/javascript" src="invertScrollImplementation.js"></script>
