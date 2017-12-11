@@ -1,0 +1,63 @@
+<html>
+    <!-- 
+        AJAX Project 4
+        Sarah Omernik
+        Tilted Page Scroll HTML
+    -->
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>AJAX Project 4 | Mask Plugin Form Input</title>
+        <!-- JQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        
+        <!-- Form Input Mask Plugin -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.12/dist/jquery.mask.min.js"></script>
+        <script src="../js/maskplugin.js"></script>
+    </head>
+
+    <body>
+        <div>
+            <h1>jquery Mask Plugin Example - Sarah Omernik</h1>
+            <p>This plugin allows users to type only the necessary parts of an input such as numbers or letters and dynamically adds other characters like commas, dashes and parentheses.</p>
+            <p>This is very helpful you want to keep consistent input with the same format.
+                If you need a user to input a phone number they would only have to type the numbers, 1234567890.
+                The input is then formatted as defined in the JavaScript code, for example (123) 456-7890.</p>
+            <p>To test, simply type numbers into the input fields</p>
+
+            <p><a href="https://igorescobar.github.io/jQuery-Mask-Plugin/">jQuery Mask Plugin Site</a></p>
+        </div>
+        <div class="main">
+            <div class="inputs">
+                <div class="input-group">
+                    <label for="date">Date</label>
+                    <input type="text" class="date" id="date" maxlength="10">
+                </div>
+
+                <div class="input-group">
+                    <label for="time">Hour</label>
+                    <input type="text" class="time" id="time" maxlength="8">
+                </div>
+
+                <div class="input-group">
+                    <label for="date_time">Date &amp; Hour</label>
+                    <input type="text" class="date_time" id="date_time" maxlength="19">
+                </div>
+
+                <div class="input-group">
+                    <label for="money">Money</label>
+                    <input type="text" class="money" id="money">
+                </div>
+
+                <div class="input-group">
+                    <label for="phone_us">Telephone</label>
+                    <input type="text" class="phone_us" id="phone_us" maxlength="14">
+                </div>
+
+                <div class="input-group">
+                    <label for="ip_address">IP Address</label>
+                    <input type="text" class="ip_address" id="ip_address" maxlength="15">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

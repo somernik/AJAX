@@ -1,0 +1,95 @@
+<html>
+<!-- 
+    Create a page for each plugin that you select
+    Include your name within an h1 tag
+    Include a description of how the plugin works. 
+        This should be about a paragraph long so that someone viewing the page for the first 
+        time would be able to identify what is happening in relation to the plugin. 
+        I am looking for a plugin description that a 5 year old could understand.
+    Include a local working example of the plugin - you cannot just reference an online example. 
+        You have to get the plugin working on your machine using your code
+    Include a link to the site that you retrieved the plugin from
+-->
+
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>AJAX Project 4 | Clockpicker</title>
+        <!-- JQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>	
+        
+
+        <!-- Clockpicker -->
+        <script type="text/javascript" src="../libs/clockpicker-gh-pages/dist/jquery-clockpicker.min.js"></script>
+        <link rel="stylesheet" href="../libs/clockpicker-gh-pages/dist/jquery-clockpicker.min.css">
+        <script type="text/javascript" src="../js/clockpickerimplementation.js"></script>
+        <style>
+            .example {
+                width: 45%;
+                float: left;
+                margin-right: 5%;
+            }
+            #main {
+                width: 90%;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <h1>Clockpicker Plugin Example - Sarah Omernik</h1>
+            <p>
+
+                This plugin allows users to select hours and minutes for an input 
+                field using a clock style interface. Once a user clicks the input 
+                field a clock face will appear allowing the user to select the hour in military time. 
+                After hours have been selected, the user selects the minute value.
+            </p>
+            <p>
+                Some other features of this plugin are:
+            </p>
+            <ul>
+                <li>setting a default time for when the clock face first opens</li>
+                <li>having a done button or allowing autoclose once minute is selected</li>
+                <li>select the placement of the popup clock face (top, bottom, left, right)</li>
+                <li>selecting the popup arrow alignment (left, right)</li>
+            </ul>
+
+            <p><a target="_blank" href="http://weareoutman.github.io/clockpicker/jquery.html">Clockpicker documentation</a></p>
+
+            <div class="example">
+                <h4>Example with Bootstrap Input Groups & Icon</h4>
+                <p>Demonstrates:</p>
+                <ul>
+                    <li>Default time (18:00)</li>
+                    <li>Autoclose once minute is selected</li>
+                    <li>Placement of the popup (right)</li>
+                </ul>
+                <div class="input-group">
+                    <input type="text" class="form-control clockpicker" id="first" placeholder="Select a time">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>Example without Bootstrap</h4>
+                <p>Demonstrates:</p>
+                <ul>
+                    <li>No default time</li>
+                    <li>Close button in order to finish selecting time</li>
+                    <li>Placement of the popup (top)</li>
+                </ul>
+                <input type="text" class="clockpicker" id="second" placeholder="Select a time">
+            </div>
+        </div>
+    </body>
+</html>
